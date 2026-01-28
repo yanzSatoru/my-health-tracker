@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loginOverlay" class="login-page">
+    <div class="card glass login-card">
+        <div class="card-icon">🔐</div>
+        <h2>Selamat Datang</h2>
+        <p>Silakan login untuk akses data kamu</p>
+        <input type="text" id="username" placeholder="Nama Kamu">
+        <input type="password" id="pin" placeholder="PIN / Password">
+        <button class="btn-primary" onclick="handleLogin()">Masuk Ke Tracker</button>
+    </div>
+</div>
+
+<div class="app-container" id="mainApp" style="display: none;">
+    </div>
+    <div class="app-container">
+        <header class="main-header">
+            <h1>Daily<span>Tracker</span></h1>
+            <p>Optimalkan hari ini untuk masa depan yang lebih baik.</p>
+        </header>
+
+        <main class="grid-layout">
+            <section class="card glass">
+                <div class="card-icon">🌙</div>
+                <h2>Jam Tidur</h2>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Tidur</label>
+                        <input type="time" id="sleepTime">
+                    </div>
+                    <div class="input-group">
+                        <label>Bangun</label>
+                        <input type="time" id="wakeTime">
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="saveSleep()">Simpan</button>
+                <div id="result" class="result-display"></div>
+            </section>
+
+            <section class="card glass">
+                <div class="card-icon">💪</div>
+                <h2>Olahraga</h2>
+                <label>Jenis</label>
+                <select id="exerciseType">
+                    <option value="Push up">Push up</option>
+                    <option value="Sit up">Sit up</option>
+                    <option value="Squat">Squat</option>
+                    <option value="Plank">Plank</option>
+                </select>
+                <label>Jumlah / Durasi</label>
+                <input type="number" id="exerciseAmount" placeholder="Contoh: 10 atau 2">
+                <button class="btn-primary" onclick="saveExercise()">Simpan</button>
+                <div id="exerciseResult" class="result-display"></div>
+            </section>
+
+            <section class="card glass">
+                <div class="card-icon">🎮</div>
+                <h2>Game</h2>
+                <label>Nama Game</label>
+                <input type="text" id="gameName" placeholder="Contoh: Mobile Legends">
+                <label>Lama Main (jam)</label>
+                <input type="number" id="gameHours" step="0.5" placeholder="Contoh: 1.5">
+                <button class="btn-primary" onclick="saveGame()">Simpan</button>
+                <div id="gameResult" class="result-display"></div>
+            </section>
+
+            <section class="card glass">
+                <div class="card-icon">📚</div>
+                <h2>Belajar</h2>
+                <label>Apa yang dipelajari?</label>
+                <input type="text" id="studyTopic" placeholder="Contoh: HTML Dasar">
+                <label>Durasi (menit)</label>
+                <input type="number" id="studyMinutes" placeholder="Contoh: 30">
+                <button class="btn-primary" onclick="saveStudy()">Simpan</button>
+                <div id="studyResult" class="result-display"></div>
+            </section>
+
+            <section class="card glass">
+                <div class="card-icon">💰</div>
+                <h2>Tabungan</h2>
+                <label>Nominal (Rp)</label>
+                <input type="number" id="savingAmount" placeholder="Contoh: 10000">
+                <button class="btn-primary" onclick="saveSaving()">Simpan</button>
+                <div id="savingResult" class="result-display"></div>
+            </section>
+
+            <section class="card glass">
+    <div class="card-icon">🚬</div>
+    <h2>Cigarette Tracker</h2>
+    <label>Jumlah batang hari ini</label>
+    <div class="input-row" style="display: flex; gap: 10px; align-items: center;">
+        <input type="number" id="smokeAmount" placeholder="0" min="0" style="margin: 0;">
+        <button class="btn-primary" onclick="addSmoke(1)" style="width: 60px; margin: 0;">+1</button>
+    </div>
+    <button class="btn-primary" style="margin-top: 10px;" onclick="saveSmoke()">Simpan Data</button>
+    <div id="smokeResult" class="result-display"></div>
+</section>
+
+            <section class="card glass summary-highlight">
+                <div class="card-icon">📊</div>
+                <h2>Ringkasan Hari Ini</h2>
+                <div id="summary"></div>
+            </section>
+
+<button class="btn-primary" onclick="downloadReport()" style="background: linear-gradient(135deg, #2ed573, #7bed9f); margin-top: 15px;">
+    📥 Download Laporan Hari Ini
+</button>
+
+        </main>
+    </div>
+    <div style="margin-top: 30px; text-align: center;">
+    <button onclick="resetAllData()" style="background: #ff4757; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 12px; opacity: 0.7;">
+        🗑️ Reset Semua Data
+    </button>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
